@@ -1,0 +1,67 @@
+{
+	"author": "ItzayHR",
+	"name": "electron-project",
+	"private": true,
+	"version": "0.0.3",
+	"type": "module",
+	"main": "src/main.cjs",
+	"scripts": {
+		"dev": "vite & npm run start",
+		"start": "nodemon electron --trace-warnings .",
+		"build:dev": "vite build & node modifyBuild.js & npm run start",
+		"build:pro": "vite build & node modifyBuild.js & npm run electronBuild",
+		"electronBuild": "rmdir /s /q installer & npx electron-builder build -w",
+		"lint": "eslint . --ext js,jsx --report-unused-disable-directives --max-warnings 0",
+		"preview": "vite preview"
+	},
+	"dependencies": {
+		"@ClanersLatam/libs": "0.0.86",
+		"@emotion/react": "11.11.1",
+		"@emotion/styled": "11.11.0",
+		"@mui/icons-material": "5.11.16",
+		"@mui/material": "5.13.5",
+		"axios": "1.5.0",
+		"cors": "2.8.5",
+		"express": "4.18.2",
+		"react": "18.2.0",
+		"react-dom": "18.2.0",
+		"react-query": "3.39.3"
+	},
+	"devDependencies": {
+		"@types/react": "18.2.15",
+		"@types/react-dom": "18.2.7",
+		"@vitejs/plugin-react": "4.0.3",
+		"electron": "26.1.0",
+		"electron-builder": "24.6.3",
+		"electron-devtools-installer": "3.2.0",
+		"eslint": "8.45.0",
+		"eslint-plugin-react": "7.32.2",
+		"eslint-plugin-react-hooks": "4.6.0",
+		"eslint-plugin-react-refresh": "0.4.3",
+		"esm": "3.2.25",
+		"mongodb": "6.0.0",
+		"nodemon": "3.0.1",
+		"react-router-dom": "6.15.0",
+		"replace-in-file": "7.0.1",
+		"rollup-plugin-visualizer": "5.9.2",
+		"vite": "4.4.5",
+		"vite-plugin-css-injected-by-js": "3.3.0"
+	},
+	"build": {
+		"appId": "com.losmps.mechanic",
+		"productName": "ESTRADA'S MECHANICS",
+		"directories": {
+			"output": "./installer"
+		},
+		"win": {
+			"target": "nsis",
+			"icon": "dist/icon2.png"
+		},
+		"includeSubNodeModules": true,
+		"buildDependenciesFromSource": true
+	},
+	"files": [
+		"dist/**",
+		"src/main.cjs"
+	]
+}
